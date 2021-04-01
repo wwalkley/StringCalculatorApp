@@ -45,8 +45,8 @@ namespace StringCalculatorTests
         [Fact]
         public void Add_WhenGivenMultipleDelimiters_ShouldReturnSum()
         {
-            int actual = StringCalculator.Add("1, 5, \n5 ,5 \\2 ; 6");
-            int expected = 24;
+            int actual = StringCalculator.Add("\\;\n1;2");
+            int expected = 3;
             
             Assert.Equal(expected, actual);
         }
