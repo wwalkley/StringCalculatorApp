@@ -32,6 +32,16 @@ namespace StringCalculatorTests
             
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void Add_WhenGivenStringWithLineBreaksAndCommas_ShouldReturnSum()
+        {
+            int actual = StringCalculator.Add("1, 5, \n5,5\n2");
+            int expected = 18;
+            
+            Assert.Equal(expected, actual);
+        }
+        
         
     }
 }

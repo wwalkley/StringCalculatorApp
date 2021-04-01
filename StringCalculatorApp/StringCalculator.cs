@@ -26,14 +26,14 @@ namespace StringCalculatorApp
 
         private static List<int> GetNumbers(string rawNumbers)
         {
-            string [] extractedNumbers = ExtractNumbers(rawNumbers);
-            return ConvertToNumeric(extractedNumbers);
+            string [] extractedStringNumbers = ExtractNumbers(rawNumbers);
+            return ConvertToNumeric(extractedStringNumbers);
         }
 
-        private static List<int> ConvertToNumeric(string[] extractedNumbers)
+        private static List<int> ConvertToNumeric(string[] extractedStringNumbers)
         {
             List<int> convertedList = new List<int>();
-            foreach (string number in extractedNumbers)
+            foreach (string number in extractedStringNumbers)
             {
                 try
                 {
