@@ -37,8 +37,11 @@ namespace StringCalculatorApp
             {
                 try
                 {
-                    int convertedValue = Int32.Parse(number);
-                    convertedList.Add(convertedValue);
+                    if (!string.IsNullOrEmpty(number.Trim()))
+                    {
+                        int convertedValue = Int32.Parse(number);
+                        convertedList.Add(convertedValue);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -52,7 +55,7 @@ namespace StringCalculatorApp
 
         private static string[] ExtractNumbers(string rawNumbers)
         {
-            return rawNumbers.Split(',');
+            return rawNumbers.Split(new Char[] {',', '\n', '\\', ';'});
         }
     }
 }
