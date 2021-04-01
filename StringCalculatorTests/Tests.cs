@@ -63,17 +63,15 @@ namespace StringCalculatorTests
         }
         
         [Fact]
-        public void Add_WhenGivenMultipleNegativeNumbers_ShouldReturnException()
+        public void Add_WhenGivenNumbersAbove1000_ShouldReturnSumWithThoseIgnored()
         {
-            string actual = Assert.Throws<Exception>(() =>StringCalculator.Add("\\;\n1;-2, -4")).Message;
-            string expected = "Negatives not allowed : -2 -4";
+            int actual = StringCalculator.Add("\\;\n1;2,2000");
+            int expected = 3;
             
             Assert.Equal(expected, actual);
-   
-            
         }
-        
-        
-        
+
+
+
     }
 }

@@ -49,9 +49,22 @@ namespace StringCalculatorApp
         private static List<int> GetNumbers(string rawNumbers)
         {
             string [] extractedStringNumbers = ExtractNumbers(rawNumbers);
-            return ConvertToNumeric(extractedStringNumbers);
+            List<int> convertedNumbers = ConvertToNumeric(extractedStringNumbers);
+            return TrimNumbersAbove1000(convertedNumbers);
         }
 
+        private static List<int> TrimNumbersAbove1000(List<int> convertedNumbers)
+        {
+            foreach (int number in convertedNumbers.ToList())
+            {
+                if (number > 1000)
+                {
+                    convertedNumbers.Remove(number);
+                }
+            }
+
+            return convertedNumbers;
+        }
         private static List<int> ConvertToNumeric(string[] extractedStringNumbers)
         {
             List<int> convertedList = new List<int>();
@@ -80,7 +93,7 @@ namespace StringCalculatorApp
             return rawNumbers.Split(new Char[] {',', '\n', '\\', ';'});
         }
         
-        public static bool IsNegative( int number)
+        private static bool IsNegative( int number)
         {
             return number < 0;
         }
