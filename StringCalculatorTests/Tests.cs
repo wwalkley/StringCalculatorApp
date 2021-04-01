@@ -16,9 +16,12 @@ namespace StringCalculatorTests
         }
 
         [Fact]
-        public void Add_MoreThanTwoNumbers_ShouldThrowError()
+        public void Add_MoreThanTwoNumbers_ShouldReturnSum()
         {
-            Assert.Throws<Exception>(() => StringCalculator.Add("1,2,3")) ;
+            int actual = StringCalculator.Add("5, 60, 10, 20, 100") ;
+            int expected = 195;
+            
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
