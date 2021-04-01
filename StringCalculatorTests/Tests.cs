@@ -51,6 +51,29 @@ namespace StringCalculatorTests
             Assert.Equal(expected, actual);
         }
         
+        [Fact]
+        public void Add_WhenGivenNegativeNumbers_ShouldReturnException()
+        {
+            string actual = Assert.Throws<Exception>(() =>StringCalculator.Add("\\;\n1;-2")).Message;
+            string expected = "Negatives not allowed : -2";
+            
+            Assert.Equal(expected, actual);
+   
+            
+        }
+        
+        [Fact]
+        public void Add_WhenGivenMultipleNegativeNumbers_ShouldReturnException()
+        {
+            string actual = Assert.Throws<Exception>(() =>StringCalculator.Add("\\;\n1;-2, -4")).Message;
+            string expected = "Negatives not allowed : -2 -4";
+            
+            Assert.Equal(expected, actual);
+   
+            
+        }
+        
+        
         
     }
 }

@@ -18,10 +18,32 @@ namespace StringCalculatorApp
             if (!string.IsNullOrEmpty(rawNumbers))
             {
                 List<int> formattedNumbers = GetNumbers(rawNumbers);
+                CheckForNegatives(formattedNumbers);
                 sum = formattedNumbers.Sum();
             }
             
             return sum;
+        }
+
+        private static void CheckForNegatives(List<int> formattedNumbers)
+        {
+            List<int> negativeNumbers = new List<int>();
+            foreach (int number in formattedNumbers)
+            {
+                if (IsNegative(number))
+                {
+                    negativeNumbers.Add(number);
+                }
+            }
+
+            if (negativeNumbers.Any())
+            {
+                throw new Exception(
+                    $"Negatives not allowed : {string.Join(" ", negativeNumbers.Select(x => x.ToString()).ToArray())}");
+            }
+
+    
+
         }
 
         private static List<int> GetNumbers(string rawNumbers)
@@ -57,5 +79,11 @@ namespace StringCalculatorApp
         {
             return rawNumbers.Split(new Char[] {',', '\n', '\\', ';'});
         }
+        
+        public static bool IsNegative( int number)
+        {
+            return number < 0;
+        }
+
     }
 }
